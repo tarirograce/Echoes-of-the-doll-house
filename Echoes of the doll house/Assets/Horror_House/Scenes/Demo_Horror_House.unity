@@ -21241,6 +21241,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6140130955561919102, guid: de68a968babc5f94b86bbe04bc8b16ed, type: 3}
   m_PrefabInstance: {fileID: 592530991}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &593683632 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2918805845291815652, guid: 9c7e51dced8dfd94aacdd6fe23bb125e, type: 3}
+  m_PrefabInstance: {fileID: 185182628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &596266433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8215607102394346463, guid: 674ddaf68d546864c992a4210608dce3, type: 3}
@@ -29882,7 +29887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3c779816bf264449e07529f2f957ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsCam: {fileID: 0}
+  fpsCam: {fileID: 593683632}
   gunModel: {fileID: 919132149155446097, guid: 8f9696fb6017be144a307b6586855ac0, type: 3}
   damage: 20
   range: 50

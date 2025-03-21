@@ -1,14 +1,15 @@
 //written by Tariro Grace
 using UnityEngine;
-using System.Collections;  
+using System.Collections;
 
 public class GunController : MonoBehaviour
 {
     public Camera fpsCam;  // Reference to the FPS camera (for shooting direction)
+    public GameObject gunModel;  // Reference to the actual gun model (set in the inspector)
     public float damage = 20f;  // Damage the gun deals per shot
     public float range = 50f;  // Maximum shooting distance
     public float fireRate = 0.2f;  // Time between shots
-    public float reloadTime = 1.5f;  // Time to reload the gun
+    public float reloadTime = 0.7f;  // Time to reload the gun
     public int maxAmmo = 10;  // Max ammo capacity
     private int currentAmmo;  // Current ammo count
     private float nextTimeToFire = 0f;  // Time before the next shot can be fired
@@ -17,6 +18,14 @@ public class GunController : MonoBehaviour
     void Start()
     {
         currentAmmo = maxAmmo;  // Set the initial ammo to max ammo
+        if (gunModel != null)
+        {
+            gunModel.SetActive(true);  // Make sure the gun model is active
+        }
+        else
+        {
+            Debug.LogWarning("Gun model not assigned!");
+        }
     }
 
     void Update()
@@ -63,7 +72,6 @@ public class GunController : MonoBehaviour
         }
     }
 
-
     // Coroutine for reloading the gun
     IEnumerator Reload()
     {
@@ -72,5 +80,23 @@ public class GunController : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);  // Wait for the reload time
         currentAmmo = maxAmmo;  // Refill ammo to max capacity
         isReloading = false;  // Reset reloading flag
+    }
+
+    // Optional: Add a method to hide the gun (for when it's not active or during reloading)
+    public void HideGun()
+    {
+        if (gunModel != null)
+        {
+            gunModel.SetActive(false);  // Hide the gun when not needed
+        }
+    }
+
+    // Optional: Add a method to show the gun (for when it's reactivated or after reloading)
+    public void ShowGun()
+    {
+        if (gunModel != null)
+        {
+            gunModel.SetActive(true);  // Show the gun when needed
+        }
     }
 }

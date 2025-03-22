@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;  // Stores velocity (jump force & gravity)
     private bool isGrounded;   // Checks if player is grounded
 
+    private Animator animator; // Animator reference to control animations
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         moveAction = playerInput.actions.FindAction("Move");
 
         controller = GetComponent<CharacterController>();  // Get CharacterController
+        animator = GetComponent<Animator>();  // Get the Animator component
     }
 
     // Update is called once per frame
@@ -63,6 +66,12 @@ public class PlayerMovement : MonoBehaviour
 
         // Move the player using CharacterController
         controller.Move(moveDirection * speed * Time.deltaTime);
+
+        // Calculate movement speed (this could be the magnitude of the movement direction)
+        float currentSpeed = moveDirection.magnitude * speed;
+
+        // Pass the calculated speed to the Animator to control the Blend Tree
+        animator.SetFloat("Speed", currentSpeed);
     }
 
     // Jump functionality

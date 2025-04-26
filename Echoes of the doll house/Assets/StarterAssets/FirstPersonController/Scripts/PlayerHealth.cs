@@ -1,4 +1,4 @@
-//written by Tariro Grace
+﻿// written by Tariro Grace
 using UnityEngine;
 using UnityEngine.SceneManagement; // Only if you want to restart scene on death
 
@@ -17,6 +17,9 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
         Debug.Log("Player took damage! Current health: " + currentHealth);
 
+        // 🩸 FLASH BLOOD ON SCREEN WHEN DAMAGED
+        FindObjectOfType<DamageOverlay>().ShowBlood();
+
         if (currentHealth <= 0f)
         {
             Die();
@@ -31,4 +34,3 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
-

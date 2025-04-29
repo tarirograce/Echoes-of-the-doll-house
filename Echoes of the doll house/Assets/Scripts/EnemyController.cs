@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController: MonoBehaviour
 {
     public float lookRadius = 10f;
     public int maxHealth = 100;

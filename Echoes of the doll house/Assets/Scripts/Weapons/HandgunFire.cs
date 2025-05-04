@@ -10,6 +10,7 @@ public class HandgunFire : MonoBehaviour
     [SerializeField] GameObject handgun;
     [SerializeField] bool canFire = true;
     [SerializeField] GameObject extraCross;
+
     void Update()
     {
         if (Input.GetMouseButton(0))
